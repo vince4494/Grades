@@ -19,11 +19,6 @@ namespace Grades
             //computing stats on the gradebook
             GradeStatistics stats = book.ComputeStatistics();
 
-
-    
-
-           
-
         }
     }
 
