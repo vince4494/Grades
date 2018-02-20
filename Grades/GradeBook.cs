@@ -20,18 +20,29 @@ namespace Grades
             GradeStatistics stats = new GradeStatistics();
             float sum = 0;
 
-            foreach(float grade in grades)
+            if (grades.Count == 0)
             {
-                stats.HighestGrade = Math.Max(grade, stats.HighestGrade);
-                stats.LowestGrade = Math.Min(grade, stats.LowestGrade);
+                Console.WriteLine("There are no grades in the GradeBook");
+            }
+            else
+            {
+                foreach (float grade in grades)
+                {
+                    stats.HighestGrade = Math.Max(grade, stats.HighestGrade);
+                    stats.LowestGrade = Math.Min(grade, stats.LowestGrade);
 
-                sum += grade;
+                    sum += grade;
+                }
+
+                stats.AverageGrade = sum / grades.Count;
+
+                Console.WriteLine("This is the average grade: " + stats.AverageGrade);
+                Console.WriteLine("This is the highest grade: " + stats.HighestGrade);
+                Console.WriteLine("This is the lowest grade: " + stats.LowestGrade);
+
             }
 
-            stats.AverageGrade = sum / grades.Count;
-
-
-            return stats; 
+            return stats;
         }
 
         //adds grade to list

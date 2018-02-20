@@ -19,9 +19,8 @@ namespace Grades
             //computing stats on the gradebook
             GradeStatistics stats = book.ComputeStatistics();
 
-            Console.WriteLine("This is the average grade: " + stats.AverageGrade);
-            Console.WriteLine("This is the highest grade: " + stats.HighestGrade);
-            Console.WriteLine("This is the lowest grade: " + stats.LowestGrade);
+
+    
 
            
 
