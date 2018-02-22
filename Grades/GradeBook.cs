@@ -24,24 +24,16 @@ namespace Grades
             {
                 Console.WriteLine("There are no grades in the GradeBook");
             }
-            else
+            
+            foreach (float grade in grades)
             {
-                foreach (float grade in grades)
-                {
-                    stats.HighestGrade = Math.Max(grade, stats.HighestGrade);
-                    stats.LowestGrade = Math.Min(grade, stats.LowestGrade);
+                stats.HighestGrade = Math.Max(grade, stats.HighestGrade);
+                stats.LowestGrade = Math.Min(grade, stats.LowestGrade);
 
-                    sum += grade;
-                }
-
-                stats.AverageGrade = sum / grades.Count;
-
-                Console.WriteLine("This is the average grade: " + stats.AverageGrade);
-                Console.WriteLine("This is the highest grade: " + stats.HighestGrade);
-                Console.WriteLine("This is the lowest grade: " + stats.LowestGrade);
-
+                sum += grade;
             }
 
+            stats.AverageGrade = sum / grades.Count;
             return stats;
         }
 
