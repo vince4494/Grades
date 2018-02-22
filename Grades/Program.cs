@@ -14,6 +14,11 @@ namespace Grades
 
             //adding grades to gradebook
             GradeBook book = new GradeBook();
+            book.Name = "Vince's Gradebook";
+
+            //ignored since our property accounts for this condition
+            book.Name = null;
+
             book.AddGrade(91);
             book.AddGrade(89.5f);
             book.AddGrade(75);
@@ -21,6 +26,7 @@ namespace Grades
             //computing stats on the gradebook
             GradeStatistics stats = book.ComputeStatistics();
 
+            Console.WriteLine(book.Name);
             WriteResults("This is the average grade: ", stats.AverageGrade);
             WriteResults("This is the highest grade: ", (int)stats.HighestGrade);
             WriteResults("This is the lowest grade: ", stats.LowestGrade); 

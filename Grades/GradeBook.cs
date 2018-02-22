@@ -43,7 +43,28 @@ namespace Grades
             grades.Add(grade);
         }
 
-        public string Name;
+        //auto implemented property
+        public string Name
+        {
+            //when someone wants to read the name property
+            get
+            {
+                return _name;
+            }
+
+            //when someone wants to wrtite to this property
+            //check to see if string is null or empty
+            set
+            {
+                if(!String.IsNullOrEmpty(value))
+                {
+                    _name = value;
+                }
+            }
+        }
+
+        //field created to hold string value for Name
+        private string _name;
 
         private List<float> grades;
 
