@@ -11,7 +11,6 @@ namespace Grades
         static void Main(string[] args)
         {
 
-
             //adding grades to gradebook
             GradeBook book = new GradeBook();
             book.Name = "Vince's Gradebook";
@@ -33,7 +32,6 @@ namespace Grades
 
         }
 
-
         //method overloading
         //one method takes an int while other takes a float
         static void WriteResults(string description, int result)
@@ -45,9 +43,6 @@ namespace Grades
         {
             Console.WriteLine("{0}{1}", description, result);
         }
-
-
-
 
     }
 
