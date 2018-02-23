@@ -13,7 +13,12 @@ namespace Grades
 
             //adding grades to gradebook
             GradeBook book = new GradeBook();
+
+            book.NameChanged += new NameChangedDelegate(OnNameChanged);
+            book.NameChanged += new NameChangedDelegate(OnNameChanged2);
+
             book.Name = "Vince's Gradebook";
+            book.Name = "Grade book";
 
             //ignored since our property accounts for this condition
             book.Name = null;
@@ -30,6 +35,16 @@ namespace Grades
             WriteResults("This is the highest grade: ", (int)stats.HighestGrade);
             WriteResults("This is the lowest grade: ", stats.LowestGrade); 
 
+        }
+
+        static void OnNameChanged(string existingName, string newName)
+        {
+            Console.WriteLine($"Grade book changing name from {existingName} to {newName}");
+        }
+
+        static void OnNameChanged2(string existingName, string newName)
+        {
+            Console.WriteLine("***");
         }
 
         //method overloading
