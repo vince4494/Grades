@@ -59,18 +59,19 @@ namespace Grades
             {
                 if(!String.IsNullOrEmpty(value))
                 {
+                    NameChangedEventArgs args = new NameChangedEventArgs();
+                    args.ExistingName = _name;
+                    args.NewName = value;
 
-                    if(_name != value)
-                    {
-                        NameChanged(_name, value);
-                    }
+                    NameChanged(this, args);
 
-                    _name = value;
                 }
+
+                _name = value;
             }
         }
 
-        public NameChangedDelegate NameChanged;
+        public event NameChangedDelegate NameChanged;
 
         //field created to hold string value for Name
         private string _name;

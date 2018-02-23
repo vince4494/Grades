@@ -14,8 +14,9 @@ namespace Grades
             //adding grades to gradebook
             GradeBook book = new GradeBook();
 
-            book.NameChanged += new NameChangedDelegate(OnNameChanged);
-            book.NameChanged += new NameChangedDelegate(OnNameChanged2);
+            book.NameChanged += OnNameChanged;
+         
+            
 
             book.Name = "Vince's Gradebook";
             book.Name = "Grade book";
@@ -37,15 +38,11 @@ namespace Grades
 
         }
 
-        static void OnNameChanged(string existingName, string newName)
+        static void OnNameChanged(object sender, NameChangedEventArgs args)
         {
-            Console.WriteLine($"Grade book changing name from {existingName} to {newName}");
+            Console.WriteLine($"Grade book changing name from {args.ExistingName} to {args.NewName}");
         }
 
-        static void OnNameChanged2(string existingName, string newName)
-        {
-            Console.WriteLine("***");
-        }
 
         //method overloading
         //one method takes an int while other takes a float
