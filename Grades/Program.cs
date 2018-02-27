@@ -14,12 +14,7 @@ namespace Grades
             //adding grades to gradebook
             GradeBook book = new GradeBook();
 
-            book.NameChanged += OnNameChanged;
-         
-            
-
-            book.Name = "Vince's Gradebook";
-            book.Name = "Grade book";
+           
 
             //ignored since our property accounts for this condition
             book.Name = null;
@@ -33,24 +28,20 @@ namespace Grades
 
             Console.WriteLine(book.Name);
             WriteResults("This is the average grade: ", stats.AverageGrade);
-            WriteResults("This is the highest grade: ", (int)stats.HighestGrade);
-            WriteResults("This is the lowest grade: ", stats.LowestGrade); 
+            WriteResults("This is the highest grade: ", stats.HighestGrade);
+            WriteResults("This is the lowest grade: ", stats.LowestGrade);
+            WriteResults("Grade: ", stats.LetterGrade);
 
         }
 
-        static void OnNameChanged(object sender, NameChangedEventArgs args)
+        //method overloading since we want to return stats.LetterGrade and it is a string
+        //C# compiler is smart enough to chose the correct method
+        static void WriteResults(string description, string result)
         {
-            Console.WriteLine($"Grade book changing name from {args.ExistingName} to {args.NewName}");
+            Console.WriteLine("{0}{1}", description, result);
         }
 
-
-        //method overloading
-        //one method takes an int while other takes a float
-        static void WriteResults(string description, int result)
-        {
-            Console.WriteLine(description + result);
-        }
-
+        //method to print out results
         static void WriteResults(string description, float result)
         {
             Console.WriteLine("{0}{1}", description, result);
