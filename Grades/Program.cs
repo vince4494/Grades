@@ -30,7 +30,7 @@ namespace Grades
             WriteResults("This is the average grade: ", stats.AverageGrade);
             WriteResults("This is the highest grade: ", stats.HighestGrade);
             WriteResults("This is the lowest grade: ", stats.LowestGrade);
-            WriteResults("Grade: ", stats.LetterGrade);
+            WriteResults(stats.Description, stats.LetterGrade);
 
         }
 
