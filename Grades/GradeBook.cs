@@ -26,7 +26,7 @@ namespace Grades
             {
                 Console.WriteLine("There are no grades in the GradeBook");
             }
-            
+
             foreach (float grade in grades)
             {
                 stats.HighestGrade = Math.Max(grade, stats.HighestGrade);
@@ -63,11 +63,18 @@ namespace Grades
                 return _name;
             }
 
-            //when someone wants to wrtite to this property
+            //when someone wants to write to this property
             //check to see if string is null or empty
             set
             {
-                if(!String.IsNullOrEmpty(value))
+
+                //exception displayed if gradebook name is set to null
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Name cannot be null or empty");
+                }
+
+                if (_name != value)
                 {
                     NameChangedEventArgs args = new NameChangedEventArgs();
                     args.ExistingName = _name;

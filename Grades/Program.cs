@@ -13,10 +13,6 @@ namespace Grades
 
             //adding grades to gradebook
             GradeBook book = new GradeBook();
-
-           
-
-            //ignored since our property accounts for this condition
             book.Name = null;
 
             book.AddGrade(91);
