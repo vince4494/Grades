@@ -22,11 +22,10 @@ namespace Grades
             book.AddGrade(91);
             book.AddGrade(89.5f);
             book.AddGrade(75);
+            book.WriteGrades(Console.Out);
 
             //computing stats on the gradebook
             GradeStatistics stats = book.ComputeStatistics();
-
-            Console.WriteLine(book.Name);
             WriteResults("This is the average grade: ", stats.AverageGrade);
             WriteResults("This is the highest grade: ", stats.HighestGrade);
             WriteResults("This is the lowest grade: ", stats.LowestGrade);
