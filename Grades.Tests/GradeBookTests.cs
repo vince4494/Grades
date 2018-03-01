@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Grades.Tests
@@ -70,6 +71,17 @@ namespace Grades.Tests
 
             GradeStatistics result = book.ComputeStatistics();
             Assert.AreEqual("Good: ", result.Description);
+
+        }
+
+        [TestMethod]
+        public void GradeBookNameIsNotANumber()
+        {  
+            GradeBook book = new GradeBook();
+            book.Name = "Vince";
+
+            //checks to make sure the book name does not have any numbers in it
+            Assert.IsTrue(Regex.IsMatch(book.Name, @"^[a-zA-Z]+$"));
 
         }
     }
