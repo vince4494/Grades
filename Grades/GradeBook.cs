@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Grades
@@ -73,8 +74,12 @@ namespace Grades
                 {
                     throw new ArgumentException("Name cannot be null or empty");
                 }
+                else if(!Regex.IsMatch(value, @"^[a-zA-Z]+$"))
+                {
+                    throw new ArgumentException("Name cannot be a number");
+                }
 
-                if (_name != value)
+                if (_name != value && NameChanged != null)
                 {
                     NameChangedEventArgs args = new NameChangedEventArgs();
                     args.ExistingName = _name;
