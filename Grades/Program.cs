@@ -15,7 +15,7 @@ namespace Grades
         {
 
             //adding grades to gradebook
-            GradeBook book = new GradeBook();
+            GradeBook book = new ThrowAwayGradeBook();
 
             GetBookName(book);
             AddGrades(book);

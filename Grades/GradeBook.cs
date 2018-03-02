@@ -98,7 +98,7 @@ namespace Grades
         //field created to hold string value for Name
         private string _name;
 
-        private List<float> grades;
+        protected List<float> grades;
 
     }
 }
