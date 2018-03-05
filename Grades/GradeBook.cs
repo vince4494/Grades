@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Grades
 {
-    public class GradeBook
+    public class GradeBook : GradeTracker
     {
         //constructor 
         public GradeBook()
@@ -18,7 +18,7 @@ namespace Grades
         }
 
         //compute statistics class 
-        public GradeStatistics ComputeStatistics()
+        public override GradeStatistics ComputeStatistics()
         {
             GradeStatistics stats = new GradeStatistics();
             float sum = 0;
@@ -40,7 +40,7 @@ namespace Grades
             return stats;
         }
 
-        public void WriteGrades(TextWriter destination)
+        public override void WriteGrades(TextWriter destination)
         {
             for (int i = 0; i < grades.Count; i++)
             {
@@ -50,53 +50,10 @@ namespace Grades
         }
 
         //adds grade to list
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
             grades.Add(grade);
         }
-
-        //auto implemented property
-        public string Name
-        {
-            //when someone wants to read the name property
-            get
-            {
-                return _name;
-            }
-
-            //when someone wants to write to this property
-            //check to see if string is null or empty
-            set
-            {
-
-                //exception displayed if gradebook name is set to null
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Name cannot be null or empty");
-                }
-                else if(!Regex.IsMatch(value, @"^[a-zA-Z]+$"))
-                {
-                    throw new ArgumentException("Name cannot be a number");
-                }
-
-                if (_name != value && NameChanged != null)
-                {
-                    NameChangedEventArgs args = new NameChangedEventArgs();
-                    args.ExistingName = _name;
-                    args.NewName = value;
-
-                    NameChanged(this, args);
-
-                }
-
-                _name = value;
-            }
-        }
-
-        public event NameChangedDelegate NameChanged;
-
-        //field created to hold string value for Name
-        private string _name;
 
         protected List<float> grades;
 

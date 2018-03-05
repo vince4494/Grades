@@ -9,7 +9,7 @@ namespace Grades
     //inheriting from Gradebook
     public class ThrowAwayGradeBook : GradeBook
     {
-        public GradeStatistics ComputeStatistics()
+        public override GradeStatistics ComputeStatistics()
         {
             
 
